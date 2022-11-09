@@ -50,11 +50,11 @@ stockSpanner.next(85);  // return 6
 testCase1 = ["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
 testCase2 = [[], [100], [80], [60], [70], [60], [75], [85]]
 
-testOutputs = [null, 1, 1, 1, 2, 1, 4, 6]
+testOutputs = ["", 1, 1, 1, 2, 1, 4, 6]
 
 tester = StockSpanner()
 iter = 0
-for case in testCases:
-    output = tester.twoSum(testCases[iter], target[iter])
+for case in testCase1:
+    output = tester.next(testCase1[iter], testCase2[iter])
     print (output, testOutputs[iter])
     iter += 1
