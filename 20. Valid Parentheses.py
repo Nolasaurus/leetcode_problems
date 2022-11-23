@@ -11,19 +11,37 @@ Every close bracket has a corresponding open bracket of the same type.
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        valid = "()[]{}"
+        br = ["()", "[]", "{}"]
+
         n = len(s)
         if n%2 != 0:
             return False
 
-        for br in s:
+        i = 0
+        while s:
+            if s in br:
+                return True
             
+            if len(s)==2 and s not in br:
+                return False
+            
+            if i > len(s)-2:
+                return False
+
+            pair = s[i]+s[i+1]
+            if pair in br:
+                s = s[:i] + s[i + 2:]
+                i = 0
+            else:
+                i+=1
+
         return True
 
         
 
 test = Solution()
-testcases = ["()","()[]{}","(]", ")))"]
+#testcases = ["(([]){})"]
+testcases = ["()","()[]{}","(]", ")))", "([)]", "(){}}{", "(([]){})"]
 for case in testcases:
     print(test.isValid(case))
 
