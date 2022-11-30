@@ -22,6 +22,5 @@ class Solution:
 test_ages = [[20,30,100,110,120],[16,17,18],[16,16]]#, long_ages]
 corr = [3,2,2]
 test = Solution()
-
 for i in range(len(test_ages)):
     print(test.numFriendRequests(test_ages[i]), test.numFriendRequests(test_ages[i])==corr[i])

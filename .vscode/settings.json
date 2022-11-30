@@ -1,3 +1,16 @@
 {
-    "python.analysis.typeCheckingMode": "basic"
-}
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+          "source": "PowerShell",
+          "icon": "terminal-powershell",
+          "args": ["-ExecutionPolicy", "Bypass"]
+        }
+      },
+      "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "workbench.colorTheme": "Default Dark+",
+    "debug.console.wordWrap": false,
+    "editor.wordWrapColumn": 160,
+    "python.defaultInterpreterPath": "C:\\Users\\meyer\\AppData\\Local\\Microsoft\\WindowsApps\\python3.10.exe",
+    "git.autofetch": true,
+  
+  }
