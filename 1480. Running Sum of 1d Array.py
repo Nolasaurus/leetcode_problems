@@ -1,25 +1,25 @@
 class Solution:
-    def halvesAreAlike(self, s: str) -> bool:
-        s = s.lower()
-        half = int(len(s)/2)
-        vowels = list("aeiou")
+    def runningSum(self, nums: list[int]) -> list[int]:
+        run_totals = []
+        for i in range(len(nums)):
+            run_totals.append(sum(nums[0:i+1]))
 
-        s1_ct = 0
+        return run_totals
 
-        for i in range(half):
-            if s[i] in vowels:
-                s1_ct += 1
-            if s[half+i] in vowels:
-                s1_ct -= 1
-
-        return s1_ct == 0
-
-
-
-    
 tester = Solution()
 
-cases = ["book", "textbook"]
+cases = [[1,2,3,4],[1,1,1,1,1]]
 
 for i in range(len(cases)):
-    print(tester.halvesAreAlike(cases[i]))
+    print(tester.runningSum(cases[i]))
+
+
+"""Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+
+Return the running sum of nums.
+
+Input: nums = [1,2,3,4]
+Output: [1,3,6,10]
+Explanation: Running sum is obtained as follows: 
+[1, 1+2, 1+2+3, 1+2+3+4].
+"""
