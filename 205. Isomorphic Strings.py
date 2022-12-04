@@ -1,24 +1,32 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
 
+        #label every letter with unique id
+        #compare two lists
+        #if same list, return true
+        if len(s) != len(t):
+            return False
 
-        
+        id1 = {}
+        id2 = {}
 
+        for i, letter  in enumerate(s):
+            if s[i] not in id1.keys():
+                id1[letter] = i #assign key and value {letter: "id"}
 
-'''
-Given two strings s and t, determine if they are isomorphic.
+            if t[i] not in id2.keys():
+                id2[t[i]] = i #assign key and value {letter: "id"}
 
-Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+            if id2[t[i]] != id1[s[i]]:
+                return False
+        return True
 
-All occurrences of a character must be replaced with another character while 
-preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
-'''
 tester = Solution()
 
-word1 = ["egg", "foo", "paper"]
-word2 = ["add", "bar", "title"]
-corr = [True, False, True]
+word1 = ["baba", "bbbaaaba", "egg", "foo", "paper"]
+word2 = ["badc", "aaabbbba", "add", "bar", "title"]
+corr = [False, False, True, False, True]
 
 for i, case in enumerate(word1):
-    out = tester.frequencySort(case)
+    out = tester.isIsomorphic(word1[i], word2[i])
     print(out, (out==corr[i])*"Correct")
