@@ -1,27 +1,13 @@
 class Solution:
     def pivotIndex(self, nums: list[int]) -> int:
-        '''Attempt 1 - too slow
-        for i in range(len(nums)):
-            if sum(nums[:i])==sum(nums[i+1:]):
+
+        r = sum(nums)
+        l = 0
+
+        for i, number in enumerate(nums):
+            if l == (r - l - number):
                 return i
-        return -1
-        '''
-
-        #### recursion???
-        ##TODO implement faster approach
-        ## pick center spot
-        n = len(nums)
-
-        half = n//2 #floor 13->6.5->6
-        sqrt_n = n**0.5
-
-        if sum(nums[1:]) == 0:
-            return 0
-        if sum(nums[:-1]) == 0:
-            return n
-
-        for i in range(0,int(sqrt_n)):
-            print(i)
+            l += number
 
         return -1
 
