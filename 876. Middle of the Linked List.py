@@ -1,58 +1,35 @@
-class Node(object):
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-        
-class LinkedList(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-        
-    def append(self, new_node):
-        current = self.val
-        if current:
-            while current.next:
-                current = current.next
-            current.next = new_node
-        else:
-            self.head = new_node
-
 class Solution:
-    def middleNode(self, head):
-        slow = fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        return slow
+    def middleNode(self, head: ListNode) -> ListNode:
 
-tester = Solution()
-case = [1,2,3,4,5,6]
-e1 = Node(case[0])
-l1 = LinkedList(e1)
+        LL_values = []
+        count = 1
+        while head and head.next:
+            val = head.val
+            count +=1
+            LL_values.append(val) ##store head value
+            ## point head to next node
+            head = head.next
 
-for i in range(1,len(case)-1):
-    l1.append(Node(i))
+        middle = count//2 #floor
 
-print(tester.middleNode(l1))
+        ##rebuild list up to the middle node
 
-"""
->>> 3/2
-1.5
->>> 3//2 # floor
-1
->>> -(-3//2) # ceil
-2
+        new_node = ListNode()
+        dummy = ListNode()
+        print(LL_values)
 
-Given the head of a singly linked list, return the middle node of the linked list.
+        while len(LL_values) > middle:
+            
+            new_node.next = head
+            
+            new_node.val = LL_values[-1]
+            dummy = ListNode(head.val)
+            
+            LL_values = LL_values[:-1]
+            dummy.next = head.next
 
-If there are two middle nodes, return the second middle node.
-
-
-
- Input: head = [1,2,3,4,5]
-Output: [3,4,5]
-Explanation: The middle node of the list is node 3.
-
-"""
-
-
+            head = ListNode(new_node.val)
+            head.next = new_node.next
+            
+                
+        return head
